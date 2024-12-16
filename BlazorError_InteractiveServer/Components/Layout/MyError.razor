@@ -1,0 +1,27 @@
+﻿<div class="container text-center mt-5">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h1 class="text-danger">
+                <i class="bi bi-exclamation-triangle-fill"></i> システムエラー
+            </h1>
+            <p class="text-muted mt-3">
+                申し訳ありませんが、問題が発生しました。しばらくしてから再度お試しください。
+            </p>
+            <div class="mt-4">
+                <button class="btn btn-primary btn-lg" @onclick="NavigateToHome">
+                    <i class="bi bi-house-door-fill"></i> Homeへ戻る
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Inject] private NavigationManager NavigationManager { get; set; } = default!;
+
+    private void NavigateToHome()
+    {
+        // 完全なページリロードを実行
+        NavigationManager.NavigateTo("/", forceLoad: true);
+    }
+}
